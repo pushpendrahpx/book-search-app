@@ -126,7 +126,7 @@ function App() {
     });
   }, [state.books]);
   useEffect(() => {
-    if (state.selectedCategory == "Abll") {
+    if (state.selectedCategory == "All") {
       setState((prev) => {
         return { ...prev, filtered: state.books };
       });
