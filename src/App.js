@@ -67,13 +67,33 @@ const EachBookItem = ({ data }) => {
           )}
         </div>
       </div>
-      <Button
-        type="text"
-        shape="circle"
-        onClick={() => setCollapsed((prev) => !prev)}
-      >
-        {!collapsed ? <CaretUpOutlined /> : <CaretDownOutlined />}
-      </Button>
+      <div>
+        {" "}
+        <Button
+          type="primary"
+          onClick={async () => {
+            try {
+              let response = await fetch("https://amazon.in/BuyBookLink");
+              if (response.ok) {
+                message.success("Book Bought Successfully!");
+              } else {
+                throw Error("Failed to Buy Book!");
+              }
+            } catch (error) {
+              message.error("Failed to Buy Book!");
+            }
+          }}
+        >
+          Buy Now
+        </Button>
+        <Button
+          type="text"
+          shape="circle"
+          onClick={() => setCollapsed((prev) => !prev)}
+        >
+          {!collapsed ? <CaretUpOutlined /> : <CaretDownOutlined />}
+        </Button>
+      </div>
     </div>
   );
 };
